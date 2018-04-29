@@ -7,7 +7,6 @@ Modified from https://github.com/pytorch/vision.git
 '''
 import torch
 import torch.nn as nn
-from torch.autograd import Variable
 
 cfg = {
     'VGG11': [64, 'M', 128, 'M', 256, 256, 'M', 512, 512, 'M', 512, 512, 'M'],
@@ -22,7 +21,7 @@ class VGG(nn.Module):
         self.features = self._make_layers(cfg[vgg_name])
         self.classifier = nn.Sequential(
             nn.Dropout(),
-            nn.Linear(512, 4096),
+            nn.Linear(25088, 4096),  # change out channel
             nn.ReLU(True),
             nn.Dropout(),
             nn.Linear(4096, 4096),
@@ -33,6 +32,7 @@ class VGG(nn.Module):
     def forward(self, x):
         out = self.features(x)
         out = out.view(out.size(0), -1)
+        # print(out.size())
         out = self.classifier(out)
         return out
 
@@ -44,11 +44,23 @@ class VGG(nn.Module):
                 layers += [nn.MaxPool2d(kernel_size=2, stride=2)]
             else:
                 layers += [nn.Conv2d(in_channels, x, kernel_size=3, padding=1),
-                           nn.BatchNorm2d(x),  # !
+                           nn.BatchNorm2d(x),  # add batchnorm 
                            nn.ReLU(inplace=True)]
                 in_channels = x
         return nn.Sequential(*layers)
 
-# net = VGG('VGG16')
-# x = torch.randn(2,3,32,32)
-# print(net(Variable(x)))
+def VGG11():
+    return VGG('VGG11')
+
+def VGG13():
+    return VGG('VGG13')
+
+def VGG16():
+    return VGG('VGG16')
+
+def VGG19():
+    return VGG('VGG19')
+
+# net = VGG19()
+# x = torch.randn(2, 3, 224, 224)
+# print(net(x))

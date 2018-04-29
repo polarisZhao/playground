@@ -1,11 +1,16 @@
-'''DenseNet in PyTorch.'''
+'''
+DenseNet in PyTorch.
+Author: zhaozhichao
+
+Reference:
+[1] Gao Huang, Zhuang Liu, Laurens van der Maaten
+    Densely Connected Convolutional Networks  arXiv:1608.06993
+'''
 import math
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
-from torch.autograd import Variable
 
 
 class Bottleneck(nn.Module):
@@ -22,7 +27,6 @@ class Bottleneck(nn.Module):
         out = torch.cat([out,x], 1)
         return out
 
-
 class Transition(nn.Module):
     def __init__(self, in_planes, out_planes):
         super(Transition, self).__init__()
@@ -33,7 +37,6 @@ class Transition(nn.Module):
         out = self.conv(F.relu(self.bn(x)))
         out = F.avg_pool2d(out, 2)
         return out
-
 
 class DenseNet(nn.Module):
     def __init__(self, block, nblocks, growth_rate=12, reduction=0.5, num_classes=10):
@@ -65,7 +68,7 @@ class DenseNet(nn.Module):
         num_planes += nblocks[3]*growth_rate
 
         self.bn = nn.BatchNorm2d(num_planes)
-        self.linear = nn.Linear(num_planes, num_classes)
+        self.linear = nn.Linear(50176, num_classes)  # change input channels
 
     def _make_dense_layers(self, block, in_planes, nblock):
         layers = []
@@ -82,6 +85,7 @@ class DenseNet(nn.Module):
         out = self.dense4(out)
         out = F.avg_pool2d(F.relu(self.bn(out)), 4)
         out = out.view(out.size(0), -1)
+        # print(out.size())
         out = self.linear(out)
         return out
 
@@ -97,13 +101,9 @@ def DenseNet201():
 def DenseNet161():
     return DenseNet(Bottleneck, [6,12,36,24], growth_rate=48)
 
-def densenet_cifar():
-    return DenseNet(Bottleneck, [6,12,24,16], growth_rate=12)
 
-def test_densenet():
-    net = densenet_cifar()
-    x = torch.randn(1,3,32,32)
-    y = net(Variable(x))
-    print(y)
+# net = DenseNet121()
+# x = torch.randn(1,3, 224, 224)
+# y = net(x)
+# print(y)
 
-# test_densenet()

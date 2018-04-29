@@ -11,9 +11,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from torch.autograd import Variable
-
-
 class Inception(nn.Module):
     def __init__(self, in_planes, n1x1, n3x3red, n3x3, n5x5red, n5x5, pool_planes):
         super(Inception, self).__init__()
@@ -87,7 +84,7 @@ class GoogLeNet(nn.Module):
         self.b5 = Inception(832, 384, 192, 384, 48, 128, 128)
 
         self.avgpool = nn.AvgPool2d(8, stride=1)
-        self.linear = nn.Linear(1024, 10)
+        self.linear = nn.Linear(2458624, 10) # change inchannel and num of classes
 
     def forward(self, x):
         out = self.pre_layers(x)
@@ -98,10 +95,11 @@ class GoogLeNet(nn.Module):
         out = self.b5(self.a5(out))
         out = self.avgpool(out)
         out = out.view(out.size(0), -1)
+        print(out.size())
         out = self.linear(out)
         return out
 
 # net = GoogLeNet()
-# x = torch.randn(1,3,32,32)
-# y = net(Variable(x))
+# x = torch.randn(1,3, 224, 224)
+# y = net(x)
 # print(y)
