@@ -6,9 +6,10 @@ pytorch playground, include model
 ###### 基础模型系列
 
 - [ ] alexnet
+- [ ] vgg
 
 
-- [x] vgg
+- [x] vgg_bn
 
   ​
 
@@ -29,7 +30,7 @@ pytorch playground, include model
 
 - [ ] wide-resnet
 
-- [ ] senet
+- [x] senet
 
 - [ ] dpn
 
