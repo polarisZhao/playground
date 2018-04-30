@@ -7,7 +7,7 @@ pytorch playground, include model
 - [x] googlenet
 - [ ] xception
 - [x] resnet
-- [ ] resnext
+- [x] resnext
 - [x] senet
 - [ ] dpn
 - [ ] mobilenetv2
