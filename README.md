@@ -3,7 +3,7 @@ pytorch playground, include model
 
 #### basic models
 
-###### 基础模型系列
+###### VGG
 
 - [ ] vgg
 
@@ -13,7 +13,7 @@ pytorch playground, include model
   ​
 
 
-###### Inception 系列
+###### Inception 
 
 - [x] googlenet
 - [ ] Inception v2-v4
@@ -21,7 +21,7 @@ pytorch playground, include model
 - [ ] xception
 
 
-###### resnet 系列
+###### resnet 
 
 - [x] resnet
 
@@ -38,12 +38,36 @@ pytorch playground, include model
   ​
 
 
-###### 模型的压缩和加速系列
+###### model compression
 
 - [ ] mobilenet v1-v2  = 5.2
 - [ ] shufflenet  = 5.2
 - [ ] squeezenet = 5.2
 
+
+
+
+#### Detection
+
+- [ ] Faster RCNN
+- [ ] YOLO v3
+- [ ] SSD
+
+
+
+#### Segmentation
+
+- [ ] FCN
+- [ ] U-Net
+- [ ] Mask Rcnn
+
+
+
+#### GAN
+
+- [ ] Origin GAN
+- [ ] DCGAN
+- [ ] wGAN
 
 
 
