@@ -12,7 +12,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-
 class Bottleneck(nn.Module):
     def __init__(self, in_planes, growth_rate):
         super(Bottleneck, self).__init__()
@@ -68,7 +67,7 @@ class DenseNet(nn.Module):
         num_planes += nblocks[3]*growth_rate
 
         self.bn = nn.BatchNorm2d(num_planes)
-        self.linear = nn.Linear(50176, num_classes)  # change input channels
+        self.linear = nn.Linear(94080, num_classes)  # change input channels
 
     def _make_dense_layers(self, block, in_planes, nblock):
         layers = []
@@ -102,8 +101,8 @@ def DenseNet161():
     return DenseNet(Bottleneck, [6,12,36,24], growth_rate=48)
 
 
-# net = DenseNet121()
+# net = DenseNet201()
 # x = torch.randn(1,3, 224, 224)
 # y = net(x)
-# print(y)
+# print(y.size())
 
