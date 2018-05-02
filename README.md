@@ -5,7 +5,6 @@ pytorch playground, include model
 
 ###### 基础模型系列
 
-- [ ] alexnet
 - [ ] vgg
 
 
@@ -17,7 +16,7 @@ pytorch playground, include model
 ###### Inception 系列
 
 - [x] googlenet
-- [ ] Inception v1-v4
+- [ ] Inception v2-v4
 - [ ] Inception-resnet v1 - v2
 - [ ] xception
 
@@ -28,25 +27,27 @@ pytorch playground, include model
 
 - [x] resnext
 
-- [ ] wide-resnet
+- [ ] wide-resnet = 5.1
 
 - [x] senet
 
-- [ ] dpn
+- [x] dpn =  5.1
 
-- [ ] densenet
+- [x] densenet
 
   ​
 
 
 ###### 模型的压缩和加速系列
 
-- [ ] mobilenet v1-v2
-- [ ] shufflenet
-- [ ] squeezenet
+- [ ] mobilenet v1-v2  = 5.2
+- [ ] shufflenet  = 5.2
+- [ ] squeezenet = 5.2
 
 
 
+
+5月3号-5 月 6号： check 一遍所有代码，再论文读一遍， 按照以下的tips 进行更新 
 
 Tips： 
 
@@ -59,3 +60,4 @@ Tips：
 - 招人帮忙检查最后的实现
 - README 文件应该简介易懂
 - 注意宣传
+- 一致的地方：参数命名方式，文件头，调用的函数的接口，各种层的相关
