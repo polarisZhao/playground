@@ -5,7 +5,7 @@ pytorch playground, include model
 
 ###### VGG
 
-- [ ] vgg
+- [x] vgg
 
 
 - [x] vgg_bn
