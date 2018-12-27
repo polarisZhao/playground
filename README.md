@@ -1,7 +1,23 @@
-# pytorch-playground
-pytorch playground, include model
+# playground
 
-#### basic models
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Pytorh basic model
+
+###### MNIST Demo
 
 ###### VGG
 
@@ -66,7 +82,7 @@ pytorch playground, include model
 #### GAN
 
 - [ ] Origin GAN
-- [ ] DCGAN
+- [x] DCGAN
 - [ ] wGAN
 
 
