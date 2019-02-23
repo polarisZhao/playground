@@ -57,7 +57,7 @@ def main():
     global_step = tf.Variable(0, dtype=tf.int32, trainable=False, name="global_step")
     train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy, global_step=global_step) 
     correct_prediction = tf.equal(tf.argmax(y_conv,1), tf.argmax(y_,1))
-    accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))  # cast 将bool类型 转化为 0，1
+    accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))  # cast将bool类型 转化为 0，1
 
     with tf.name_scope("summaries"):    # Step One
         tf.summary.image('input', x_image, 5)
